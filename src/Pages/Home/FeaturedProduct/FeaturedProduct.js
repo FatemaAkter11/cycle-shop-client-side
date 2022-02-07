@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Container, Row } from "react-bootstrap";
+import { Card, Col, Container, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 const FeaturedProduct = () => {
@@ -24,22 +24,26 @@ const FeaturedProduct = () => {
             </div>
             <Row>
                 {products.slice(0, 6).map((pd, index) => (
-                    <div key={pd.id} className="col-md-4 my-5">
-                        <div>
-                            <img className="w-50" src={pd?.image} alt="" />
+                    <Col sm={12} md={6} lg={4} key={pd.id} className="my-5">
+                        <div className="m-2">
+                            <Card className="mx-auto card" style={{ width: "21rem" }}>
+                                <Card.Img variant="top" className="img-fluid mx-auto" src={pd?.image} />
+                                <Card.Body className="my-1 py-1">
+                                    <Card.Title><p className="text-muted">{pd.category}</p></Card.Title>
+                                    <Card.Text><h6>{pd.name.slice(0, 33)}</h6></Card.Text>
+                                    <Card.Text><p className="text-danger">Price: ${pd.price}</p></Card.Text>
+                                </Card.Body>
+
+                                <Card.Body className="d-flex">
+                                    <Link to='/productDetails'>
+                                        <button className="btn btn-warning font-bold">
+                                            View Details
+                                        </button>
+                                    </Link>
+                                </Card.Body>
+                            </Card>
                         </div>
-                        <small>
-                            <p className="text-muted">{pd.category}</p>
-                            <hr />
-                        </small>
-                        <h6>{pd.name.slice(0, 33)}</h6>
-                        <p className="text-danger">${pd.price}</p>
-                        <Link to='/productDetails'>
-                            <button className="btn btn-warning font-bold">
-                                View Details
-                            </button>
-                        </Link>
-                    </div>
+                    </Col>
                 ))}
             </Row>
         </Container>

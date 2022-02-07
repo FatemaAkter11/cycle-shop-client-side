@@ -33,7 +33,7 @@ const AllProducts = () => {
                             <hr />
                         </small>
                         <h6>{pd.name.slice(0, 33)}</h6>
-                        <p className="text-danger">${pd.price}</p>
+                        <p className="text-danger">Price: ${pd.price}</p>
                         <Link to='productDetails'>
                             <button className="btn btn-warning font-bold">
                                 View Details
