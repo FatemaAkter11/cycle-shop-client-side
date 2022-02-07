@@ -4,6 +4,7 @@ import {
 } from "react-router-dom";
 import Home from './Pages/Home/Home/Home';
 import Menubar from './Pages/Home/Shared/Menubar/Menubar/Menubar';
+import AllProducts from './Pages/Home/AllProducts/AllProducts';
 
 function App() {
   return (
@@ -16,6 +17,9 @@ function App() {
           </Route>
           <Route path="/home">
             <Home></Home>
+          </Route>
+          <Route path="/allProduct">
+            <AllProducts></AllProducts>
           </Route>
         </Switch>
       </Router>
