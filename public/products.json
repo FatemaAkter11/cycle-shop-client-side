@@ -8,7 +8,7 @@
         "category": "Mountain Bike"
     },
     {
-        "_id": "618cce3a2f2fe3c05507b4c5",
+        "id": "2",
         "name": "Giant Stance 2 27.5″",
         "description": "Built with a lightweight ALUXX aluminum frameset and our innovative FlexPoint rear suspension, Stance is the perfect way to improve your trail-riding game. Its 27.5+ wheel and tire compatibility gives it a plush ride quality that soaks up bumps and adds more traction and stability. Combined with 120mm of smooth suspension travel front and rear, it’s a confident ride that will have you nailing new lines.",
         "image": "https://i.ibb.co/dpvgmSS/giant-stance-2-275-1.png",
@@ -16,7 +16,7 @@
         "category": "Mountain Bike"
     },
     {
-        "_id": "618cd27a2f2fe3c05507b4c6",
+        "id": "3",
         "name": "A 2010 model year Cervélo RS",
         "description": "We’re thrilled to announce that starting today, Lime will begin returning JUMP’s beloved bikes to Denver. It’s an exciting milestone in Lime’s journey as we build on our multi-modal roots. We see Denver as an ideal choice to be the first city to relaunch JUMP bikes since our recent acquisition, thanks to its forward-thinking approach to micromobility. ",
         "image": "https://i.ibb.co/NTX646p/a-2010-model-year-cervelo-rs.png",
@@ -24,7 +24,7 @@
         "category": "Jump Bike"
     },
     {
-        "_id": "618cd32e2f2fe3c05507b4c7",
+        "id": "4",
         "name": "Cube Stereo 140 HPC SL 27.5″",
         "description": "They say don't judge a book by its cover, but the Stereo 140 HPC frame's beauty is definitely more than skin deep. Hidden pivots, a short rocker and internally routed cables all contribute to clean looks, great handling and reduced maintenance. The carbon main frame is light and, thanks to details like a tapered head tube, also stiff and accurate. Combined with a Boost 148 rear axle, it makes for a precise, trail-devouring machine. And, with a huge range of sizes, there's one to suit every rider.",
         "image": "https://i.ibb.co/NYbjpGz/cube-stereo-140-hpc-sl-275.png",
@@ -32,7 +32,7 @@
         "category": "Road Bike"
     },
     {
-        "_id": "618cd4bb2f2fe3c05507b4c8",
+        "id": "5",
         "name": " Ludovic Péron Trek Bicycle",
         "description": "The Shimano Tourney 7-speed drivetrain is always reliable. With little maintenance required, this Shimano Tourney drivetrain will shift through the gears to find a comfortable cadence to match the terrain. The compact chainset is supported by a set of forged alloy double cranks for strength and durability at a low weight.",
         "image": "https://i.ibb.co/8cqDVrN/ludovic-peron-trek-bicycle.png",
@@ -40,7 +40,7 @@
         "category": "Road Bike"
     },
     {
-        "_id": "618cd5f02f2fe3c05507b4c9",
+        "id": "6",
         "name": "Keanu Specialized Road Bike",
         "description": "The large 700x25C road wheels offer great strength and are more than capable of withstanding rough city roads. Rolling on Kenda 700x25C tyres will provide a touch of comfort.",
         "image": "https://i.ibb.co/wyJgDWW/keanu-specialized-road-bike-1.png",
@@ -48,7 +48,7 @@
         "category": "Road Bike"
     },
     {
-        "_id": "618e5728c6a27f0f35156e1b",
+        "id": "7",
         "name": "BRAKE REPARING",
         "description": "fsagfdgfgafafafaf",
         "image": "https://i.ibb.co/mGbP5Rd/giant-stance-2-275-2.png",
@@ -56,7 +56,7 @@
         "category": "Jump Bike"
     },
     {
-        "_id": "618f4c3c52c862ca0b2e5161",
+        "id": "8",
         "name": "Cube Stereo 140 HPC SL 27.5″",
         "description": "Built with a lightweight ALUXX aluminum frameset and our innovative FlexPoint rear suspension, Stance is the perfect way to improve your trail-riding game. Its 27.5+ wheel and tire compatibility gives it a plush ride quality that soaks up bumps and adds more traction and stability. Combined with 120mm of smooth suspension travel front and rear, it’s a confident ride that will have you nailing new lines.",
         "image": "https://i.ibb.co/wyJgDWW/keanu-specialized-road-bike-1.png",
@@ -64,7 +64,7 @@
         "category": "Jump Bike"
     },
     {
-        "_id": "618f4c6152c862ca0b2e5162",
+        "id": "9",
         "name": "Cube Stereo 140 HPC SL 27.5″",
         "description": "The Zenium CR is a carbon road bike that's ideal for local criteriums, fast sportives, weekend club runs and is also a comfortable and super-reliable training bike. It features a full carbon frameset that's equipped with a Shimano 105 2x11-Speed groupset with hydraulic disc brakes. This bike provides high-performance for efficient hill climbs, fast sprints and offers all-day riding comfort for long days in the saddle.",
         "image": "https://i.ibb.co/mGbP5Rd/giant-stance-2-275-2.png",

@@ -11,14 +11,11 @@ function App() {
       <Router>
         <Menubar />
         <Switch>
-          <Route path="/about">
-            <Home />
+          <Route exact path="/">
+            <Home></Home>
           </Route>
           <Route path="/home">
-            <Home />
-          </Route>
-          <Route path="/">
-            <Home />
+            <Home></Home>
           </Route>
         </Switch>
       </Router>
