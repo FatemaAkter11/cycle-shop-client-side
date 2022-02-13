@@ -1,11 +1,16 @@
 import React from 'react';
-import { Alert, Button, Container, Row } from "react-bootstrap";
+import { Alert, Button, Container, Row, Spinner } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { FaFacebookF, FaGithub, FaGoogle } from "react-icons/fa";
 import registerImg from "../../../images/register.png";
+import useAuth from '../../../hooks/useAuth';
+import { useHistory, useLocation } from 'react-router-dom/cjs/react-router-dom.min';
 
 const Register = () => {
+    const { user, registerUser, isLoading, signInWithGoogle, error } = useAuth();
+    const location = useLocation();
+    const history = useHistory();
     const {
         register,
         handleSubmit,
@@ -13,8 +18,14 @@ const Register = () => {
         formState: { errors },
     } = useForm();
 
+    //   google login handler
+    const handleGoogleSignIn = () => {
+        signInWithGoogle(location, history);
+    };
+
     // handle on submit
     const onSubmit = (data) => {
+        registerUser(data.email, data.password, data.name, location, history);
         reset();
     };
     return (
@@ -28,13 +39,7 @@ const Register = () => {
                         <h5>CREATE AN ACCOUNT</h5>
                         <hr />
                         <div className="mb-2">
-                            {/* <Button variant="primary">
-                                <FaFacebookF />
-                            </Button>
-                            <Button variant="secondary" className="mx-3">
-                                <FaGithub />
-                            </Button> */}
-                            <Button variant="danger">
+                            <Button onClick={handleGoogleSignIn} variant="danger">
                                 <FaGoogle />
                             </Button>
                         </div>
@@ -42,44 +47,47 @@ const Register = () => {
                             <p className="text-muted">Insert your account information:</p>
                         </small>
                         <div>
-                            <form onSubmit={handleSubmit(onSubmit)}>
-                                {/* register your input into the hook by invoking the "register" function */}
-                                <input
-                                    className="d-block w-100 rounded p-2 mb-3"
-                                    {...register("name")}
-                                    type="name"
-                                    placeholder="Your name"
-                                />
-                                <input
-                                    className="d-block w-100 rounded p-2 mb-3"
-                                    {...register("email")}
-                                    type="email"
-                                    placeholder="Your Email"
-                                />
+                            {!isLoading && (
+                                <form onSubmit={handleSubmit(onSubmit)}>
+                                    {/* register your input into the hook by invoking the "register" function */}
+                                    <input
+                                        className="d-block w-100 rounded p-2 mb-3"
+                                        {...register("name")}
+                                        type="name"
+                                        placeholder="Your name"
+                                    />
+                                    <input
+                                        className="d-block w-100 rounded p-2 mb-3"
+                                        {...register("email")}
+                                        type="email"
+                                        placeholder="Your Email"
+                                    />
 
-                                {/* include validation with required or other standard HTML validation rules */}
-                                <input
-                                    className="d-block w-100 rounded p-2 mb-3"
-                                    {...register("password")}
-                                    type="password"
-                                    placeholder="Password"
-                                />
-                                {/* errors will return when field validation fails  */}
-                                {errors.exampleRequired && (
-                                    <span>This field is required</span>
-                                )}
+                                    {/* include validation with required or other standard HTML validation rules */}
+                                    <input
+                                        className="d-block w-100 rounded p-2 mb-3"
+                                        {...register("password")}
+                                        type="password"
+                                        placeholder="Password"
+                                    />
+                                    {/* errors will return when field validation fails  */}
+                                    {errors.exampleRequired && (
+                                        <span>This field is required</span>
+                                    )}
 
-                                <Button
-                                    type="submit"
-                                    className="bg-warning rounded my-3"
-                                    style={{
-                                        border: "none",
-                                        padding: "10px 70px",
-                                    }}
-                                >
-                                    Register
-                                </Button>
-                            </form>
+                                    <Button
+                                        type="submit"
+                                        className="bg-warning rounded my-3"
+                                        style={{
+                                            border: "none",
+                                            padding: "10px 70px",
+                                        }}
+                                    >
+                                        Register
+                                    </Button>
+                                </form>
+                            )}
+                            {isLoading && <Spinner animation="border" variant="warning" />}
                         </div>
                         <div>
                             <Link to="/login">
@@ -88,6 +96,10 @@ const Register = () => {
                                 </small>
                             </Link>
                         </div>
+                        {user?.email && (
+                            <Alert variant="success">User Register Successfully</Alert>
+                        )}
+                        {error && <Alert variant="danger">{error}</Alert>}
                     </div>
                 </div>
                 <div className="d-flex justify-content-center col-md-6">

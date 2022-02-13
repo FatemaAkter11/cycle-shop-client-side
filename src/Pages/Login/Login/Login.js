@@ -4,8 +4,10 @@ import { useForm } from "react-hook-form";
 import loginImg from "../../../images/login_graphics.png";
 import { Link, useLocation, useHistory } from "react-router-dom";
 import { FaFacebookF, FaGithub, FaGoogle } from "react-icons/fa";
+import useAuth from '../../../hooks/useAuth';
 
 const Login = () => {
+    const { user, loginUser, isLoading, signInWithGoogle, error } = useAuth();
 
     const location = useLocation();
     const history = useHistory();
@@ -16,6 +18,16 @@ const Login = () => {
         reset,
         formState: { errors },
     } = useForm();
+    //   handle submit
+    const onSubmit = (data) => {
+        loginUser(data.email, data.password, location, history);
+        reset();
+    };
+
+    //   google login handler
+    const handleGoogleSignIn = () => {
+        signInWithGoogle(location, history);
+    };
 
     return (
         <Container className="text-center my-5">
@@ -31,13 +43,7 @@ const Login = () => {
                             <p className="text-muted">Login using social network:</p>
                         </small>
                         <div className="mb-2">
-                            {/* <Button variant="primary">
-                                <FaFacebookF />
-                            </Button>
-                            <Button variant="secondary" className="mx-3">
-                                <FaGithub />
-                            </Button> */}
-                            <Button variant="danger">
+                            <Button onClick={handleGoogleSignIn} variant="danger">
                                 <FaGoogle />
                             </Button>
                         </div>
@@ -45,41 +51,44 @@ const Login = () => {
                             <p className="text-muted">Or Insert your account information:</p>
                         </small>
                         <div>
-                            <form>
-                                {/* register your input into the hook by invoking the "register" function */}
-                                <input
-                                    className="d-block w-100 rounded p-2 mb-3"
-                                    {...register("email")}
-                                    type="email"
-                                    placeholder="Your Email"
-                                />
+                            {!isLoading && (
+                                <form onSubmit={handleSubmit(onSubmit)}>
+                                    {/* register your input into the hook by invoking the "register" function */}
+                                    <input
+                                        className="d-block w-100 rounded p-2 mb-3"
+                                        {...register("email")}
+                                        type="email"
+                                        placeholder="Your Email"
+                                    />
 
-                                {/* include validation with required or other standard HTML validation rules */}
-                                <input
-                                    className="d-block w-100 rounded p-2 mb-3"
-                                    {...register("password")}
-                                    type="password"
-                                    placeholder="Password"
-                                />
-                                {/* errors will return when field validation fails  */}
-                                {errors.exampleRequired && (
-                                    <span>This field is required</span>
-                                )}
-                                <Button variant="link" className="text-danger">
-                                    Forget Password
-                                </Button>
-                                <br />
-                                <Button
-                                    type="submit"
-                                    className="bg-warning rounded my-3"
-                                    style={{
-                                        border: "none",
-                                        padding: "10px 70px",
-                                    }}
-                                >
-                                    LogIn
-                                </Button>
-                            </form>
+                                    {/* include validation with required or other standard HTML validation rules */}
+                                    <input
+                                        className="d-block w-100 rounded p-2 mb-3"
+                                        {...register("password")}
+                                        type="password"
+                                        placeholder="Password"
+                                    />
+                                    {/* errors will return when field validation fails  */}
+                                    {errors.exampleRequired && (
+                                        <span>This field is required</span>
+                                    )}
+                                    <Button variant="link" className="text-danger">
+                                        Forget Password
+                                    </Button>
+                                    <br />
+                                    <Button
+                                        type="submit"
+                                        className="bg-warning rounded my-3"
+                                        style={{
+                                            border: "none",
+                                            padding: "10px 70px",
+                                        }}
+                                    >
+                                        LogIn
+                                    </Button>
+                                </form>
+                            )}
+                            {isLoading && <Spinner animation="border" variant="warning" />}
                         </div>
                         <div>
                             <Link to="/register">
@@ -87,6 +96,10 @@ const Login = () => {
                                     <p>No account? Create one here</p>
                                 </small>
                             </Link>
+                            {user?.email && (
+                                <Alert variant="success">User Register Successfully</Alert>
+                            )}
+                            {error && <Alert variant="danger">{error}</Alert>}
                         </div>
                     </div>
                 </div>
