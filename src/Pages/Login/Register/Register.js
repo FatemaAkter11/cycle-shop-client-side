@@ -1,15 +1,11 @@
 import React from 'react';
-import { Alert, Button, Container, Row, Spinner } from "react-bootstrap";
+import { Alert, Button, Container, Row } from "react-bootstrap";
 import { useForm } from "react-hook-form";
-import loginImg from "../../../images/login_graphics.png";
-import { Link, useLocation, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { FaFacebookF, FaGithub, FaGoogle } from "react-icons/fa";
+import registerImg from "../../../images/register.png";
 
-const Login = () => {
-
-    const location = useLocation();
-    const history = useHistory();
-
+const Register = () => {
     const {
         register,
         handleSubmit,
@@ -17,6 +13,10 @@ const Login = () => {
         formState: { errors },
     } = useForm();
 
+    // handle on submit
+    const onSubmit = (data) => {
+        reset();
+    };
     return (
         <Container className="text-center my-5">
             <Row>
@@ -25,11 +25,8 @@ const Login = () => {
                         className="w-75 m-auto p-5 rounded"
                         style={{ boxShadow: "0 0 20px rgb(0 0 0 / 15%)" }}
                     >
-                        <h5>LOGIN</h5>
+                        <h5>CREATE AN ACCOUNT</h5>
                         <hr />
-                        <small>
-                            <p className="text-muted">Login using social network:</p>
-                        </small>
                         <div className="mb-2">
                             <Button variant="primary">
                                 <FaFacebookF />
@@ -42,11 +39,17 @@ const Login = () => {
                             </Button>
                         </div>
                         <small>
-                            <p className="text-muted">Or Insert your account information:</p>
+                            <p className="text-muted">Insert your account information:</p>
                         </small>
                         <div>
-                            <form>
+                            <form onSubmit={handleSubmit(onSubmit)}>
                                 {/* register your input into the hook by invoking the "register" function */}
+                                <input
+                                    className="d-block w-100 rounded p-2 mb-3"
+                                    {...register("name")}
+                                    type="name"
+                                    placeholder="Your name"
+                                />
                                 <input
                                     className="d-block w-100 rounded p-2 mb-3"
                                     {...register("email")}
@@ -65,10 +68,7 @@ const Login = () => {
                                 {errors.exampleRequired && (
                                     <span>This field is required</span>
                                 )}
-                                <Button variant="link" className="text-danger">
-                                    Forget Password
-                                </Button>
-                                <br />
+
                                 <Button
                                     type="submit"
                                     className="bg-warning rounded my-3"
@@ -77,25 +77,25 @@ const Login = () => {
                                         padding: "10px 70px",
                                     }}
                                 >
-                                    LogIn
+                                    Register
                                 </Button>
                             </form>
                         </div>
                         <div>
-                            <Link to="/register">
+                            <Link to="/login">
                                 <small>
-                                    <p>No account? Create one here</p>
+                                    <p>Already Register? Please LogIn</p>
                                 </small>
                             </Link>
                         </div>
                     </div>
                 </div>
                 <div className="d-flex justify-content-center col-md-6">
-                    <img src={loginImg} alt="" />
+                    <img className="w-75 img-fluid" src={registerImg} alt="" />
                 </div>
             </Row>
         </Container>
     );
 };
 
-export default Login;
+export default Register;
