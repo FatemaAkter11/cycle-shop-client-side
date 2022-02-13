@@ -31,12 +31,12 @@ const Login = () => {
                             <p className="text-muted">Login using social network:</p>
                         </small>
                         <div className="mb-2">
-                            <Button variant="primary">
+                            {/* <Button variant="primary">
                                 <FaFacebookF />
                             </Button>
                             <Button variant="secondary" className="mx-3">
                                 <FaGithub />
-                            </Button>
+                            </Button> */}
                             <Button variant="danger">
                                 <FaGoogle />
                             </Button>

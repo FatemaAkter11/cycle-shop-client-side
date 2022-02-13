@@ -28,12 +28,12 @@ const Register = () => {
                         <h5>CREATE AN ACCOUNT</h5>
                         <hr />
                         <div className="mb-2">
-                            <Button variant="primary">
+                            {/* <Button variant="primary">
                                 <FaFacebookF />
                             </Button>
                             <Button variant="secondary" className="mx-3">
                                 <FaGithub />
-                            </Button>
+                            </Button> */}
                             <Button variant="danger">
                                 <FaGoogle />
                             </Button>
