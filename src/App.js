@@ -6,6 +6,7 @@ import Home from './Pages/Home/Home/Home';
 import Menubar from './Pages/Home/Shared/Menubar/Menubar/Menubar';
 import AllProducts from './Pages/Home/AllProducts/AllProducts';
 import Footer from './Pages/Home/Shared/Footer/Footer';
+import Login from './Pages/Login/Login/Login';
 
 function App() {
   return (
@@ -18,6 +19,9 @@ function App() {
           </Route>
           <Route path="/home">
             <Home></Home>
+          </Route>
+          <Route path="/login">
+            <Login></Login>
           </Route>
           <Route path="/allProduct">
             <AllProducts></AllProducts>
