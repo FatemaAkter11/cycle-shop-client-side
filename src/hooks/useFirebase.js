@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import initializeFirebase from "../Pages/Login/Firebase/firebase.init";
 import {
     getAuth, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, GoogleAuthProvider,
-    signInWithPopup, signOut
+    signInWithPopup, updateProfile, signOut
 } from "firebase/auth";
 import swal from "sweetalert";
 
@@ -19,14 +19,21 @@ const useFirebase = () => {
     const googleProvider = new GoogleAuthProvider();
 
     // create user
-    const registerUser = (email, password) => {
+    const registerUser = (email, password, name, history) => {
         setIsLoading(true);
         createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 setError("");
-                // Signed in 
-                const user = userCredential.user;
-                // ...
+                const newUser = { email, displayName: name };
+                setUser(newUser);
+                // send name to firebase after creation
+                updateProfile(auth.currentUser, {
+                    displayName: name,
+                })
+                    .then(() => { })
+                    .catch((error) => { });
+
+                history.replace("/");
             })
             .catch((error) => {
                 setError(error.message);

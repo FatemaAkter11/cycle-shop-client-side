@@ -3,11 +3,11 @@ import { Alert, Button, Container, Row, Spinner } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import loginImg from "../../../images/login_graphics.png";
 import { Link, useLocation, useHistory } from "react-router-dom";
-import { FaFacebookF, FaGithub, FaGoogle } from "react-icons/fa";
+import { FaGoogle } from "react-icons/fa";
 import useAuth from '../../../hooks/useAuth';
 
 const Login = () => {
-    const { user, loginUser, isLoading, signInWithGoogle, error } = useAuth();
+    const { user, error, loginUser, signInWithGoogle, isLoading } = useAuth();
 
     const location = useLocation();
     const history = useHistory();

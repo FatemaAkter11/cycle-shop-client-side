@@ -2,15 +2,17 @@ import React from 'react';
 import { Alert, Button, Container, Row, Spinner } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
-import { FaFacebookF, FaGithub, FaGoogle } from "react-icons/fa";
+import { FaGoogle } from "react-icons/fa";
 import registerImg from "../../../images/register.png";
 import useAuth from '../../../hooks/useAuth';
 import { useHistory, useLocation } from 'react-router-dom/cjs/react-router-dom.min';
 
 const Register = () => {
     const { user, registerUser, isLoading, signInWithGoogle, error } = useAuth();
+
     const location = useLocation();
     const history = useHistory();
+
     const {
         register,
         handleSubmit,
@@ -25,7 +27,7 @@ const Register = () => {
 
     // handle on submit
     const onSubmit = (data) => {
-        registerUser(data.email, data.password, data.name, location, history);
+        registerUser(data.email, data.password, data.name, history);
         reset();
     };
     return (
