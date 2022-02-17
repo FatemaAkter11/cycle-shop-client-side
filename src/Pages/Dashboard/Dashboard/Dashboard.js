@@ -10,10 +10,11 @@ import {
     MdOutlineRateReview,
 } from "react-icons/md";
 import { CgReorder } from "react-icons/cg";
-import { Link, useRouteMatch } from "react-router-dom";
+import { Switch, Route, Link, useRouteMatch } from "react-router-dom";
+import AddProduct from "../../Dashboard/AddProduct/AddProduct";
 
 const Dashboard = () => {
-    const { url } = useRouteMatch();
+    const { path, url } = useRouteMatch();
 
     return (
         <div>
@@ -87,6 +88,13 @@ const Dashboard = () => {
                             </Button>
                         </ul>
                     </div>
+                </Col>
+                <Col xs={12} md={9}>
+                    <Switch>
+                        <Route exact path={`${path}/addProduct`}>
+                            <AddProduct></AddProduct>
+                        </Route>
+                    </Switch>
                 </Col>
             </Row>
         </div>
