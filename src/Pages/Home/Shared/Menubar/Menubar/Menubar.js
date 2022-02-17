@@ -60,6 +60,7 @@ const Menubar = () => {
                                     />
                                     <p className="text-white px-2">{user.displayName}</p>
                                 </div>
+
                                 <Button
                                     className="bg-warning mx-3 text-black"
                                     onClick={logOut}
@@ -67,7 +68,16 @@ const Menubar = () => {
                                 >
                                     Logout <FiLogOut />
                                 </Button>
-
+                                <Link
+                                    to="/booking"
+                                    className="text-warning"
+                                    style={{ fontSize: "25px", textDecoration: "none" }}
+                                >
+                                    <span className="text-white"> Booking </span><FaShoppingCart />
+                                    <Badge style={{ fontSize: "10px" }} bg="danger">
+                                        order
+                                    </Badge>
+                                </Link>
                             </>
                         ) : (
                             <>
@@ -76,7 +86,7 @@ const Menubar = () => {
                                     className="text-warning px-2"
                                     style={{ fontSize: "25px", textDecoration: "none" }}
                                 >
-                                    Login  <BsPersonCircle />
+                                    Login <BsPersonCircle />
                                 </NavLink>
                                 /
                                 <Link

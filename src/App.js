@@ -10,6 +10,9 @@ import Login from './Pages/Login/Login/Login';
 import Register from './Pages/Login/Register/Register';
 import AuthProvider from './contexts/AuthProvider/AuthProvider';
 import NotFound from './Pages/Home/NotFound/NotFound';
+import Booking from './Pages/Booking/Booking';
+import PrivateRoute from './Pages/Login/PrivateRoute/PrivateRoute';
+import Dashboard from './Pages/Dashboard/Dashboard/Dashboard';
 
 function App() {
   return (
@@ -33,6 +36,12 @@ function App() {
             <Route path="/allProduct">
               <AllProducts></AllProducts>
             </Route>
+            <PrivateRoute path="/dashboard">
+              <Dashboard></Dashboard>
+            </PrivateRoute>
+            <PrivateRoute path="/booking">
+              <Booking></Booking>
+            </PrivateRoute>
             <Route path="*">
               <NotFound></NotFound>
             </Route>

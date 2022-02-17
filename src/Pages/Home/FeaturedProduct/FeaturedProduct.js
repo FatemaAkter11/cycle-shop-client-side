@@ -7,6 +7,7 @@ const FeaturedProduct = () => {
 
     useEffect(() => {
         fetch("./products.json")
+            // fetch("http://localhost:5000/allProducts")
             .then((res) => res.json())
             .then((result) => setProducts(result));
     }, []);
