@@ -14,6 +14,7 @@ import Booking from './Pages/Booking/Booking';
 import PrivateRoute from './Pages/Login/PrivateRoute/PrivateRoute';
 import Dashboard from './Pages/Dashboard/Dashboard/Dashboard';
 
+
 function App() {
   return (
     <div className="App">

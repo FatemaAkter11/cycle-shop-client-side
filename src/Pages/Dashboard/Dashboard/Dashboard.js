@@ -12,6 +12,9 @@ import {
 import { CgReorder } from "react-icons/cg";
 import { Switch, Route, Link, useRouteMatch } from "react-router-dom";
 import AddProduct from "../../Dashboard/AddProduct/AddProduct";
+import MyOrders from "../MyOrders/MyOrders";
+import Payment from "../Payment/Payment";
+import MakeAdmin from "../MakeAdmin/MakeAdmin";
 
 const Dashboard = () => {
     const { path, url } = useRouteMatch();
@@ -91,8 +94,17 @@ const Dashboard = () => {
                 </Col>
                 <Col xs={12} md={9}>
                     <Switch>
+                        <Route exact path={path}>
+                            <MyOrders></MyOrders>
+                        </Route>
                         <Route exact path={`${path}/addProduct`}>
                             <AddProduct></AddProduct>
+                        </Route>
+                        <Route exact path={`${path}/payment`}>
+                            <Payment></Payment>
+                        </Route>
+                        <Route exact path={`${path}/makeAdmin`}>
+                            <MakeAdmin></MakeAdmin>
                         </Route>
                     </Switch>
                 </Col>
