@@ -36,7 +36,7 @@ const FeaturedProduct = () => {
                                 </Card.Body>
 
                                 <Card.Body className="d-flex">
-                                    <Link to='/productDetails'>
+                                    <Link to={`/productDetails/${pd._id}`}>
                                         <button className="btn btn-warning font-bold">
                                             View Details
                                         </button>
