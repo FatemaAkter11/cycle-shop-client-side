@@ -20,7 +20,7 @@ const ProductDetails = () => {
     const history = useHistory();
 
     useEffect(() => {
-        const url = `http://localhost:5000/productDetails/${productId}`;
+        const url = `https://tranquil-hollows-53684.herokuapp.com/productDetails/${productId}`;
         fetch(url)
             .then((res) => res.json())
             .then((data) => setProduct(data));
@@ -38,7 +38,7 @@ const ProductDetails = () => {
     // const onSubmit = (data) => {
     //     data.email = user?.email;
     //     data.status = "pending";
-    //     fetch("http://localhost:5000/addOrders", {
+    //     fetch("https://tranquil-hollows-53684.herokuapp.com/addOrders", {
     //         method: "POST",
     //         headers: { "content-type": "application/json" },
     //         body: JSON.stringify(data),

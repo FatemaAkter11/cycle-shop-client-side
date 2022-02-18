@@ -10,14 +10,14 @@ const ManageAllProducts = () => {
 
     // get product collection
     useEffect(() => {
-        fetch("http://localhost:5000/allProducts")
+        fetch("https://tranquil-hollows-53684.herokuapp.com/allProducts")
             .then((res) => res.json())
             .then((data) => setProducts(data));
     }, []);
 
     // handle delete item from
     const handleDelete = (id) => {
-        fetch(`http://localhost:5000/productItem/${id}`, {
+        fetch(`https://tranquil-hollows-53684.herokuapp.com/productItem/${id}`, {
             method: "DELETE",
         })
             .then((res) => res.json())

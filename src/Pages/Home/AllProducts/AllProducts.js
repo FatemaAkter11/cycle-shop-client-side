@@ -7,7 +7,7 @@ const AllProducts = () => {
 
     useEffect(() => {
         // fetch("./products.json")
-        fetch("http://localhost:5000/allProducts")
+        fetch("https://tranquil-hollows-53684.herokuapp.com/allProducts")
             .then((res) => res.json())
             .then((result) => setProducts(result));
     }, []);

@@ -15,7 +15,7 @@ const UpdateProduct = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    fetch(`http://localhost:5000/update/${id}`, {
+    fetch(`https://tranquil-hollows-53684.herokuapp.com/update/${id}`, {
       method: "PUT",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(data),
@@ -32,7 +32,7 @@ const UpdateProduct = () => {
 
   // get update product id
   useEffect(() => {
-    fetch(`http://localhost:5000/productDetails/${id}`)
+    fetch(`https://tranquil-hollows-53684.herokuapp.com/productDetails/${id}`)
       .then((res) => res.json())
       .then((result) => setProduct(result));
   });

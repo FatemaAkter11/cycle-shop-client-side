@@ -12,7 +12,7 @@ const AddProduct = () => {
 
     //   handle submit button
     const onSubmit = (data) => {
-        fetch("http://localhost:5000/addProducts", {
+        fetch("https://tranquil-hollows-53684.herokuapp.com/addProducts", {
             method: "POST",
             headers: {
                 "content-Type": "application/json",
