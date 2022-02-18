@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import initializeFirebase from "../Pages/Login/Firebase/firebase.init";
 import {
     getAuth, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, GoogleAuthProvider,
-    signInWithPopup, updateProfile, signOut
+    signInWithPopup, updateProfile, getIdToken, signOut
 } from "firebase/auth";
 import swal from "sweetalert";
 
@@ -15,6 +15,7 @@ const useFirebase = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState("");
     const [admin, setAdmin] = useState(false);
+    const [token, setToken] = useState("");
 
     const auth = getAuth();
     const googleProvider = new GoogleAuthProvider();
@@ -84,6 +85,11 @@ const useFirebase = () => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
             if (user) {
                 setUser(user);
+                getIdToken(user)
+                    .then(idToken => {
+                        // console.log(idToken);
+                        setToken(idToken)
+                    })
             } else {
                 setUser({});
             }
@@ -126,6 +132,7 @@ const useFirebase = () => {
     return {
         user,
         admin,
+        token,
         isLoading,
         error,
         registerUser,

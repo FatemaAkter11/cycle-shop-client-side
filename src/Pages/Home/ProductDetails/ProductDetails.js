@@ -8,11 +8,13 @@ import swal from "sweetalert";
 import { useForm } from "react-hook-form";
 import useAuth from "../../../hooks/useAuth";
 import { useOrder } from "../../../contexts/orderProvider/orderProvider";
+import { Link } from "react-router-dom";
 
 
 const ProductDetails = () => {
     const [product, setProduct] = useState({});
     const [quantity, setQuantity] = useState(1);
+    // const { handleOrder } = useOrder();
     const { productId } = useParams();
     const { user } = useAuth();
     const history = useHistory();
@@ -32,6 +34,22 @@ const ProductDetails = () => {
         formState: { errors },
     } = useForm();
 
+    // handle submit
+    // const onSubmit = (data) => {
+    //     data.email = user?.email;
+    //     data.status = "pending";
+    //     fetch("http://localhost:5000/addOrders", {
+    //         method: "POST",
+    //         headers: { "content-type": "application/json" },
+    //         body: JSON.stringify(data),
+    //     })
+    //         .then((res) => res.json())
+    //         .then((result) => console.log(result));
+    //     swal("Congratulations!!!", `You have order successfully`, "success");
+    //     reset();
+    //     history.push("/");
+    //     console.log(data);
+    // };
 
     return (
         <Container className="py-5">
