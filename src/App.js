@@ -14,6 +14,7 @@ import Booking from './Pages/Booking/Booking';
 import PrivateRoute from './Pages/Login/PrivateRoute/PrivateRoute';
 import Dashboard from './Pages/Dashboard/Dashboard/Dashboard';
 import ProductDetails from './Pages/Home/ProductDetails/ProductDetails';
+import UpdateProduct from './Pages/UpdateProduct/UpadateProduct';
 
 
 function App() {
@@ -46,6 +47,9 @@ function App() {
             </PrivateRoute>
             <PrivateRoute path="/booking">
               <Booking></Booking>
+            </PrivateRoute>
+            <PrivateRoute path="/update/:id">
+              <UpdateProduct></UpdateProduct>
             </PrivateRoute>
             <Route path="*">
               <NotFound></NotFound>

@@ -15,9 +15,15 @@ import AddProduct from "../../Dashboard/AddProduct/AddProduct";
 import MyOrders from "../MyOrders/MyOrders";
 import Payment from "../Payment/Payment";
 import MakeAdmin from "../MakeAdmin/MakeAdmin";
+import ManageAllProducts from "../ManageAllProducts/ManageAllProducts";
+import ManageOrders from "../../ManageOrders/ManageOrders";
+import AddReview from "../../Review/AddReview";
+import AdminRoute from "../../Login/AdminRoute/AdminRoute";
+import useAuth from "../../../hooks/useAuth";
 
 const Dashboard = () => {
     const { path, url } = useRouteMatch();
+    const { logOut, admin } = useAuth();
 
     return (
         <div>
@@ -40,43 +46,45 @@ const Dashboard = () => {
                                     Payment
                                 </li>
                             </Link>
-                            <div>
-                                <Link
-                                    to={`${url}/addProduct`}
-                                    style={{ textDecoration: "none" }}
-                                >
-                                    <li className="my-5 text-white">
-                                        <MdLibraryAdd className="text-warning me-1" /> Add A
-                                        Product
-                                    </li>
-                                </Link>
-                                <Link
-                                    to={`${url}/makeAdmin`}
-                                    style={{ textDecoration: "none" }}
-                                >
-                                    <li className="my-5 text-white">
-                                        <MdAdminPanelSettings className="text-warning me-1" />{" "}
-                                        Make Admin
-                                    </li>
-                                </Link>
-                                <Link
-                                    to={`${url}/manageProducts`}
-                                    style={{ textDecoration: "none" }}
-                                >
-                                    <li className="my-5 text-white">
-                                        <SiManageiq className="text-warning me-1" /> Manage All
-                                        Products
-                                    </li>
-                                </Link>
-                                <Link
-                                    to={`${url}/manageOrders`}
-                                    style={{ textDecoration: "none" }}
-                                >
-                                    <li className="my-5 text-white">
-                                        <CgReorder className="text-warning me-1" /> Manage Orders
-                                    </li>
-                                </Link>
-                            </div>
+                            {admin && (
+                                <div>
+                                    <Link
+                                        to={`${url}/addProduct`}
+                                        style={{ textDecoration: "none" }}
+                                    >
+                                        <li className="my-5 text-white">
+                                            <MdLibraryAdd className="text-warning me-1" /> Add A
+                                            Product
+                                        </li>
+                                    </Link>
+                                    <Link
+                                        to={`${url}/makeAdmin`}
+                                        style={{ textDecoration: "none" }}
+                                    >
+                                        <li className="my-5 text-white">
+                                            <MdAdminPanelSettings className="text-warning me-1" />{" "}
+                                            Make Admin
+                                        </li>
+                                    </Link>
+                                    <Link
+                                        to={`${url}/manageProducts`}
+                                        style={{ textDecoration: "none" }}
+                                    >
+                                        <li className="my-5 text-white">
+                                            <SiManageiq className="text-warning me-1" /> Manage All
+                                            Products
+                                        </li>
+                                    </Link>
+                                    <Link
+                                        to={`${url}/manageOrders`}
+                                        style={{ textDecoration: "none" }}
+                                    >
+                                        <li className="my-5 text-white">
+                                            <CgReorder className="text-warning me-1" /> Manage Orders
+                                        </li>
+                                    </Link>
+                                </div>
+                            )}
                             <Link to={`${url}/addReview`} style={{ textDecoration: "none" }}>
                                 <li className="my-5 text-white">
                                     <MdOutlineRateReview className="text-warning me-1" /> Review
@@ -85,9 +93,10 @@ const Dashboard = () => {
 
                             <Button
                                 className="bg-warning mx-3 text-black"
+                                onClick={logOut}
                                 style={{ fontSize: "15px", fontWeight: "bold" }}
                             >
-                                Logout <FiLogOut />
+                                Logout  <FiLogOut />
                             </Button>
                         </ul>
                     </div>
@@ -97,14 +106,23 @@ const Dashboard = () => {
                         <Route exact path={path}>
                             <MyOrders></MyOrders>
                         </Route>
-                        <Route exact path={`${path}/addProduct`}>
+                        <AdminRoute exact path={`${path}/addProduct`}>
                             <AddProduct></AddProduct>
-                        </Route>
+                        </AdminRoute>
+                        <AdminRoute exact path={`${path}/makeAdmin`}>
+                            <MakeAdmin></MakeAdmin>
+                        </AdminRoute>
                         <Route exact path={`${path}/payment`}>
                             <Payment></Payment>
                         </Route>
-                        <Route exact path={`${path}/makeAdmin`}>
-                            <MakeAdmin></MakeAdmin>
+                        <AdminRoute exact path={`${path}/manageProducts`}>
+                            <ManageAllProducts></ManageAllProducts>
+                        </AdminRoute>
+                        <AdminRoute exact path={`${path}/manageOrders`}>
+                            <ManageOrders></ManageOrders>
+                        </AdminRoute>
+                        <Route exact path={`${path}/addReview`}>
+                            <AddReview></AddReview>
                         </Route>
                     </Switch>
                 </Col>

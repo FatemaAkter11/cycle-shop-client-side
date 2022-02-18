@@ -4,8 +4,11 @@ import { Container, Row } from "react-bootstrap";
 import { useHistory, useParams } from "react-router";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import { BsCart2 } from "react-icons/bs";
+import swal from "sweetalert";
 import { useForm } from "react-hook-form";
 import useAuth from "../../../hooks/useAuth";
+import { useOrder } from "../../../contexts/orderProvider/orderProvider";
+
 
 const ProductDetails = () => {
     const [product, setProduct] = useState({});
@@ -29,6 +32,7 @@ const ProductDetails = () => {
         formState: { errors },
     } = useForm();
 
+
     return (
         <Container className="py-5">
             <Row>
@@ -46,7 +50,7 @@ const ProductDetails = () => {
                         </small>
                     </div>
                     <hr />
-                    <div className="d-flex border w-25 align-items-center rounded">
+                    <div className="d-flex border w-25 align-items-center rounded mx-auto">
                         <span className="px-5 fs-3">{quantity}</span>
                         <div style={{ cursor: "pointer" }} className="m-2 ">
                             <AiOutlinePlus
@@ -68,6 +72,11 @@ const ProductDetails = () => {
                     <div>
                         <Button
                             variant="warning"
+                            onClick={() => {
+                                product["quantity"] = quantity;
+                                product.price = product.price * quantity;
+                                swal("Wow!!!", "Your order has added to the cart", "success");
+                            }}
                         >
                             Add TO Cart <BsCart2 />
                         </Button>
@@ -89,7 +98,7 @@ const ProductDetails = () => {
                 <h6 className="text-center title-block py-3">
                     Please Fill Out The From
                 </h6>
-                <form>
+                <form >
                     <input
                         {...register("name")}
                         defaultValue={product?.name}
